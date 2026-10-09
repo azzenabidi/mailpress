@@ -40,6 +40,15 @@ Rails.application.configure do
   # Set localhost to be used by links generated in mailer templates.
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
 
+  # Receive inbound email through Resend's webhook
+  # (POST /rails/action_mailbox/resend/inbound_emails).
+  config.action_mailbox.ingress = :resend
+
+  # Send confirmation emails through Resend when RESEND_API_KEY is set,
+  # otherwise use the in-memory :test delivery method.
+  config.action_mailer.delivery_method = ENV["RESEND_API_KEY"].present? ? :resend : :test
+  config.action_mailer.perform_deliveries = true
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

@@ -1,0 +1,10 @@
+<p>Hi,</p>
+
+<p>Your email was bounced because this address is not authorized to publish on this blog.</p>
+
+<% if @allowlist.any? %>
+  <p>Authorized senders: <%= @allowlist.join(", ") %></p>
+<% else %>
+  <p>The allowlist (MAILPRESS_ALLOWED_SENDERS) is empty on the server, which means
+  only the deployment environment itself is misconfigured.</p>
+<% end %>

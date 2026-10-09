@@ -1,0 +1,13 @@
+<p>Hi,</p>
+
+<p>Your email was received by Mailpress and <strong><%= @verb %></strong>:</p>
+
+<p>
+  <strong><%= @post.title %></strong><br>
+  Status: <%= @post.status %><br>
+  Permalink: <%= post_url(@post) %>
+</p>
+
+<% if @post.draft? %>
+  <p>To publish it, reply with the subject <code>PUBLISH: <%= @post.title %></code>.</p>
+<% end %>

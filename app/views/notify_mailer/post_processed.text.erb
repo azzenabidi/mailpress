@@ -1,0 +1,9 @@
+Hi,
+
+Your email was received by Mailpress and <%= @verb %>:
+
+<%= @post.title %>
+Status: <%= @post.status %>
+Permalink: <%= post_url(@post) %>
+
+<% if @post.draft? %>To publish it, reply with the subject "PUBLISH: <%= @post.title %>".<% end %>
