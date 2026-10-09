@@ -1,0 +1,25 @@
+<% content_for(:title, "Mailpress — published by email") %>
+
+<%= turbo_stream_from "posts" %>
+
+<div class="space-y-10">
+  <div id="posts" class="space-y-10">
+    <% if @posts.any? %>
+      <%= render partial: "posts/post", collection: @posts, as: :post %>
+    <% else %>
+      <div id="empty-state" class="rounded-xl border border-dashed border-slate-300 p-10 text-center">
+        <p class="font-medium text-slate-600">No posts yet.</p>
+        <p class="mt-2 text-sm text-slate-500">
+          Every post on this blog arrives as an email. Send one to get started.
+        </p>
+      </div>
+    <% end %>
+  </div>
+
+  <% if @next_page %>
+    <div class="pt-4 text-center">
+      <%= link_to "Older posts →", posts_path(page: @next_page),
+            class: "inline-block rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-600 hover:border-indigo-500 hover:text-indigo-600" %>
+    </div>
+  <% end %>
+</div>
