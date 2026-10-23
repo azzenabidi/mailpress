@@ -67,6 +67,6 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "resend", "~> 1.17"
+gem "resend", "~> 1.18"
 
 gem "dotenv-rails", "~> 3.2", groups: [ :development, :test ]
